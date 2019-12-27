@@ -11,10 +11,9 @@ from .pyRedshift.RS_Scene import *
 from .pyRedshift.RS_Proxy import *
 import os
 
-def nodeSetParameterData(paramName,data):
-    #rs.RS_ShaderNode.
-    paramIndex = RSShaderNode.GetParameterIndex(paramName)
-    return RSShaderNode.SetParameterData(paramIndex,DATA)
+def nodeSetParameterData(shaderNode,paramName,data):
+    paramIndex = shaderNode.GetParameterIndex(paramName)
+    return shaderNode.SetParameterData(paramIndex,data)
 
 def py_end_redshift():
     RS_Log.RS_Log_Shutdown()
