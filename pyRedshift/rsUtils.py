@@ -92,45 +92,6 @@ def changeTextureParam(node,idx,file):
     node.SetParameterData(idx, pRSTexture)
     node.EndUpdate()
     RS_Texture_Release(pRSTexture)
-
-
-def travel(node):
-    toWin = False
-    count = node.GetParameterCount()
-    for i in xrange(count):
-        if node.IsParameterATexture(i):
-            nodename = node.GetResourceName()
-            #mapTexture[nodename] = node;
-            splitName = nodename.split(":")
-            name = splitName[-1].split("{")[0]
-            print name ,": "
-            
-            file = node.ParameterDataToString(i)
-			
-            print "Source: ", file
-            if toWin == True:
-                file = file.replace("\\dd", "")
-                file = file.replace("(", "")
-                file = file.replace(")", "")
-                file = file.replace("texture: ", "")
-            else:#to linux
-                file = file.replace("\\", "/")
-                file = file.replace("F:", "/dd")
-                file = file.replace("(", "")
-                file = file.replace(")", "")
-                file = file.replace("texture: ", "")
-		
-            print "Target : " , file 
-            pRSTexture = RS_Texture_Get(file)
-            node.BeginUpdate()
-            node.SetParameterData(i, pRSTexture)
-            node.EndUpdate()
-            RS_Texture_Release(pRSTexture)
-		
-        elif node.IsParameterTexturable(i):
-            inNode = node.GetNode(i)
-            if inNode:
-                travel(inNode)
 		
 
 def getFileName(file):
