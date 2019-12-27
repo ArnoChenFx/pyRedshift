@@ -257,6 +257,7 @@ def ProxyToMaterial(file_path):
             print "Material: ",material
             createMat(mats[i],material)
     
+    RS_Camera.RS_Camera_Delete(cam)
     RS_Proxy.RS_Proxy_Delete(proxy)
 
 # file_path = "D:/DATA/Download/temp/branch.rs"
