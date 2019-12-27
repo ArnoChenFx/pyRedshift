@@ -1,0 +1,52 @@
+#include "RSHead.h"
+namespace py = pybind11;
+
+void bindRSScene(py::module&m)
+{
+	py::class_<RSScene>(m, "RSScene")
+		.def("MarkAsShaderBallScene", &RSScene::MarkAsShaderBallScene)
+		.def("IsShaderBallScene", &RSScene::IsShaderBallScene)
+		.def("ClearMeshes", &RSScene::ClearMeshes)
+		.def("GetNumMeshes", &RSScene::GetNumMeshes)
+		.def("AddMesh", &RSScene::AddMesh)
+		.def("GetMesh", &RSScene::GetMesh)
+		.def("ClearInstanceMaterialOverrides", &RSScene::ClearInstanceMaterialOverrides)
+		.def("GetNumInstanceMaterialOverrides", &RSScene::GetNumInstanceMaterialOverrides)
+		.def("AddInstanceMaterialOverride", &RSScene::AddInstanceMaterialOverride, py::return_value_policy::reference)
+		.def("ClearMeshInstances", &RSScene::ClearMeshInstances)
+		.def("GetNumMeshInstances", &RSScene::GetNumMeshInstances)
+		.def("AddMeshInstance", &RSScene::AddMeshInstance)
+		.def("GetMeshInstance", &RSScene::GetMeshInstance, py::return_value_policy::reference)
+		.def("GetNumLightMeshInstances", &RSScene::GetNumLightMeshInstances)
+		.def("ClearMeshPointClouds", &RSScene::ClearMeshPointClouds)
+		.def("GetNumMeshPointClouds", &RSScene::GetNumMeshPointClouds)
+		.def("AddMeshPointCloud", &RSScene::AddMeshPointCloud)
+		.def("GetMeshPointCloudTemplate", &RSScene::GetMeshPointCloudTemplate, py::return_value_policy::reference)
+		.def("ClearLights", &RSScene::ClearLights)
+		.def("GetNumLights", &RSScene::GetNumLights)
+		.def("AddLight", &RSScene::AddLight)
+		.def("GetLight", &RSScene::GetLight, py::return_value_policy::reference)
+		.def("ClearVolumeGrids", &RSScene::ClearVolumeGrids)
+		.def("GetNumVolumeGrids", &RSScene::GetNumVolumeGrids)
+		.def("AddVolumeGrid", &RSScene::AddVolumeGrid)
+		.def("GetVolumeGrid", &RSScene::GetVolumeGrid, py::return_value_policy::reference)
+		.def("ClearProxies", &RSScene::ClearProxies)
+		.def("GetNumProxies", &RSScene::GetNumProxies)
+		.def("AddProxy", &RSScene::AddProxy)
+		.def("GetProxy", &RSScene::GetProxy, py::return_value_policy::reference)
+		.def("ClearProxyInstances", &RSScene::ClearProxyInstances)
+		.def("GetNumProxyInstances", &RSScene::GetNumProxyInstances)
+		.def("AddProxyInstance", &RSScene::AddProxyInstance)
+		.def("GetProxyInstance", &RSScene::GetProxyInstance, py::return_value_policy::reference)
+		.def("ClearProcedurals", &RSScene::ClearProcedurals)
+		.def("GetNumProcedurals", &RSScene::GetNumProcedurals)
+		.def("AddProcedural", &RSScene::AddProcedural)
+		.def("GetProcedural", &RSScene::GetProcedural, py::return_value_policy::reference)
+		.def("ClearTraceSets", &RSScene::ClearTraceSets)
+		.def("GetNumTraceSets", &RSScene::GetNumTraceSets)
+		.def("AddTraceSet", &RSScene::AddTraceSet)
+		.def("GetTraceSet", &RSScene::GetTraceSet, py::return_value_policy::reference);
+
+	m.def("RS_Scene_New", &RS_Scene_New, py::return_value_policy::reference);
+	m.def("RS_Scene_Delete", &RS_Scene_Delete);
+}
