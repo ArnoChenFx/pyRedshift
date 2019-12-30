@@ -1,6 +1,8 @@
 import pyRedshift
 reload(pyRedshift)
 from pyRedshift import *
+import hou
+import os
     
 def createGraph(rsNode,houNode,dataDict):
     count = rsNode.GetParameterCount()
@@ -256,7 +258,7 @@ def ProxyToMaterial(file_path):
             names.append(material)
             print "Material: ",material
             createMat(mats[i],material)
-    
+            
     RS_Camera.RS_Camera_Delete(cam)
     RS_Proxy.RS_Proxy_Delete(proxy)
 
