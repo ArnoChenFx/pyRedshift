@@ -3,7 +3,7 @@ project(pyRedshift)
 
 set(CMAKE_CXX_STANDARD 14)
 set(PYTHON_DIR C:/python27)
-set(RS_SDK_DIR C:/RS_SDK)
+set(RS_SDK_DIR D:/CodeProject/RS_SDK/sdk)
 
 include_directories(${PYTHON_DIR}/include)
 include_directories(${RS_SDK_DIR}/include)
@@ -27,7 +27,6 @@ target_link_libraries(pyRedshift
         _ctypes
         _elementtree
         _hashlib
-        _msi
         _multiprocessing
         _socket
         _sqlite3
