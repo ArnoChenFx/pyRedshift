@@ -27,7 +27,6 @@ target_link_libraries(pyRedshift
         _ctypes
         _elementtree
         _hashlib
-        _msi
         _multiprocessing
         _socket
         _sqlite3
