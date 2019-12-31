@@ -26,9 +26,9 @@ def getAllTextures(node,data,containNode=True):
         if node.IsParameterATexture(i):
             
             file = node.ParameterDataToString(i)
-            file = file.replace("(", "")
-            file = file.replace(")", "")
             file = file.replace("texture: ", "")
+            if file.startswith("("):
+                file = file[1:-1]
             #print "Texture: ", file
             
             if containNode:
