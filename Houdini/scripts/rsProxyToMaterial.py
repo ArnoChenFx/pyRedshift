@@ -7,6 +7,16 @@ import os
 def createGraph(rsNode,houNode,dataDict):
     count = rsNode.GetParameterCount()
     dataDict[rsNode] = houNode
+    
+    if rsNode.GetClassName() == "RSRamp":
+        #ramp_interp = rsNode.GetParameterIndex("ramp_interp")
+        for j in xrange(8):
+            ramp_pos_idx = rsNode.GetParameterIndex("ramp_pos"+str(j))
+            ramp_val_idx = rsNode.GetParameterIndex("ramp_val"+str(j))
+            ramp_pos_value = rsNode.GetScalar(ramp_pos_idx)
+            ramp_val_value = rsNode.GetVector(ramp_val_idx)
+            print ramp_pos_value,"--->",(ramp_val_value.x,ramp_val_value.y,ramp_val_value.z)
+
     for i in xrange(count):
         #if not rsNode.IsParameterDCCConvertable(i):
         #  return
@@ -40,9 +50,7 @@ def createGraph(rsNode,houNode,dataDict):
         if rsNode.IsParameterATexture(i):
             isValue = False
             file = rsNode.ParameterDataToString(i)
-            file = file.replace("(", "")
-            file = file.replace(")", "")
-            file = file.replace("texture: ", "")
+            file = file[10:-1]
             file = fixPath(file)
             parm = houNode.parm(rsNodeParamName)
             if not parm:
@@ -90,18 +98,16 @@ def createGraph(rsNode,houNode,dataDict):
         elif rsNode.IsParameterAttributeNonUVSpaceID(i):
             isValue = False
         elif rsNode.IsParameterACurve(i):
-            print "Curve: ",houNode.name(),"-->",rsNodeParamName
-            value = rsNode.ParameterDataToString(i)
-            print value
+            #print "Curve: ",houNode.name(),"-->",rsNodeParamName
             isValue = False
         elif rsNode.IsParameterAMonoCurve(i):
-            print "MonoCurve: ",houNode.name(),"-->",rsNodeParamName
+            #print "MonoCurve: ",houNode.name(),"-->",rsNodeParamName
             isValue = False
         elif rsNode.IsParameterAColorCurve(i):
-            print "ColorCurve: ",houNode.name(),"-->",rsNodeParamName
+            #print "ColorCurve: ",houNode.name(),"-->",rsNodeParamName
             isValue = False
         elif rsNode.IsParameterAnIESProfile(i):
-            print "IESProfile: ",houNode.name(),"-->",rsNodeParamName
+            #print "IESProfile: ",houNode.name(),"-->",rsNodeParamName
             isValue = False
         elif rsNode.IsParameterBumpInput(i):
             isValue = False
