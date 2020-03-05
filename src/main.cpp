@@ -65,7 +65,7 @@ void bindRSProxy(py::module&m);//<--
 void bindRSRenderer(py::module&m);
 
 PYBIND11_MODULE(pyRedshift, m) {
-	m.doc() = "arno redshift for python";
+	m.doc() = "redshift for python";
 	py::module m1 = m.def_submodule("RS_Stream", "RS_Stream.h");
 	py::module m2 = m.def_submodule("RS_Log", "RS_Log.h");
 	py::module m3 = m.def_submodule("RS_Array", "RS_Array.h");

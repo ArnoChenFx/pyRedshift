@@ -35,7 +35,7 @@ void bindRSArray(py::module&m)
 	declare_RSArray<RSString>(m, "String");
 	declare_RSArray<RSVector3>(m, "Vector3");
 	declare_RSArray<RSVector2>(m, "Vector2");
-	declare_RSArray<RSUInt2>(m, "UInt2");//<---modify
+	declare_RSArray<RSUInt2>(m, "UInt2");//<--
 	//bool operator==(const RSUInt2& p) const { return ((p.x == x) && (p.y == y)); }
 	////declare_RSArray<RSProxy::MaterialReplacement>(m, "MaterialReplacement");
 	declare_RSArray<unsigned int>(m, "Size_t");
